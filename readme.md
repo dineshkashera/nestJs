@@ -1,4 +1,4 @@
-Here’s your text converted into Markdown format for a single `.md` file:
+eelHere’s your text converted into Markdown format for a single `.md` file:
 
 ````markdown
 # TypeScript Guide
@@ -159,3 +159,16 @@ printVehicle(oldFerrari)
 
 - Create functions that accept arguments that are typed with interfaces.
 - Object/Classes can decide to 'implement' a given interface to work with a function.
+
+## Classes
+
+Blueprint to create an object with some fields(values) and methods(functions) to represents a 'thing'
+
+## parcel-bundler
+
+tool to help us run Typescript in the Browser
+npm install -g parcel-bundler
+
+## run parcel
+
+parcel index.html
