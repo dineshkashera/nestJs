@@ -1,4 +1,4 @@
-eelHere’s your text converted into Markdown format for a single `.md` file:
+aleelHere’s your text converted into Markdown format for a single `.md` file:
 
 ````markdown
 # TypeScript Guide
@@ -172,3 +172,13 @@ npm install -g parcel-bundler
 ## run parcel
 
 parcel index.html
+
+## Generate random data
+
+install faker package: https://www.npmjs.com/package/@faker-js/faker
+
+- insure type definition file included during package import. Most of the npm packages comes without type definition file in that case we will need to add the type definition file manually.
+
+@type/<package_name>
+
+ex: npm install --save @types/faker

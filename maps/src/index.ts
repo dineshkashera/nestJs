@@ -1,1 +1,4 @@
-console.log("hello 123");
+import User from './User' ;
+
+const callUser = new User();
+console.log(callUser);
