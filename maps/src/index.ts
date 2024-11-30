@@ -1,4 +1,8 @@
-import {User} from './User' ;
+import { User } from './User' ;
+import { Company } from './Company' ;
 
-const callUser = new User();
-console.log(callUser);
+const userDetails = new User();
+console.log(`User details:`, userDetails);
+
+const companyDetails = new Company();
+console.log('Company details:', companyDetails);
