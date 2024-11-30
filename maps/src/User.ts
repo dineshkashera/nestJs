@@ -1,6 +1,4 @@
-import faker from 'faker';
-
-export default class User{
+export class User{
   name:string;
   location:{
     lat:number,
@@ -8,12 +6,12 @@ export default class User{
   };
 
   constructor(){
-      this.name = faker.address.cityName();
+      this.name = 'Hello';
       this.location = {
-        lat: parseFloat(faker.address.latitude(23, 34, 0)),
-        lng: parseFloat(faker.address.longitude(24, 33, 1))
+        lat: parseFloat('23.44'),
+        lng: parseFloat('24.55')
       }
 
-      console.log(`${this.name} - ${this.location}`);
+      console.log(`${this.name} - ${JSON.stringify(this.location)}`);
   }
 }
