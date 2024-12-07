@@ -1,6 +1,6 @@
 //how multiple class can use markers, so that every time we no need to add class name as arguments
 //Ex: addMarkers(getValues:(User | Company)): void 
-//instead use addMarkers(inteface name)
+//instead use interface as a parameter in addMarkers(inteface name)
 
 interface mappable{
   name: string,
