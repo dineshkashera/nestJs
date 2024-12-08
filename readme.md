@@ -166,7 +166,8 @@ Blueprint to create an object with some fields(values) and methods(functions) to
 
 ## parcel-bundler
 
-tool to help us run Typescript in the Browser
+## IMP: tool to help us run Typescript in the Browser
+
 npm install -g parcel-bundler
 
 ## run parcel
@@ -182,3 +183,5 @@ install faker package: https://www.npmjs.com/package/@faker-js/faker
 @type/<package_name>
 
 ex: npm install --save @types/faker
+
+## Basic TypeScript finished
