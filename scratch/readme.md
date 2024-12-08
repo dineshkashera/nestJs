@@ -54,3 +54,8 @@ Different tools in nestJS:
 # manually run file in nestJs old way:
 
 npx ts-node-dev src/main.ts
+
+## File naming convention
+
+name.type_of_thing.ts
+Ex: app.controller.ts for Class AppController{}
