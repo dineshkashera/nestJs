@@ -1,0 +1,82 @@
+You can create an SSH key with a custom filename using the `-f` option in `ssh-keygen`. Here’s how:
+
+### 1. Generate SSH Key with a Custom Filename
+
+Run the following command, replacing `custom_key` with your desired filename:
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/custom_key
+```
+
+- The private key will be saved as `~/.ssh/custom_key`
+- The public key will be saved as `~/.ssh/custom_key.pub`
+
+If prompted, set a passphrase or press **Enter** for no passphrase.
+
+---
+
+### 2. Add the Private Key to SSH Agent
+
+Run:
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/custom_key
+```
+
+---
+
+### 3. Add the Public Key to GitHub
+
+Copy the public key:
+
+```bash
+cat ~/.ssh/custom_key.pub
+```
+
+Then go to **GitHub → Settings → SSH and GPG keys**, click **New SSH Key**, and paste the key.
+
+---
+
+### 4. Use the Custom Key for Git
+
+If you want Git to use this key for a specific repository, create or edit the SSH config file:
+
+```bash
+nano ~/.ssh/config
+```
+
+Add the following lines:
+
+```
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/custom_key
+```
+
+Save and exit (`CTRL + X`, then `Y`, then `Enter`).
+
+---
+
+### 5. Test the Connection
+
+Run:
+
+```bash
+ssh -T git@github.com
+```
+
+If successful, you should see:
+
+```
+Hi <your-username>! You've successfully authenticated.
+```
+
+Now, you can push using:
+
+```bash
+git push -u origin main
+```
+
+Let me know if you need help! 🚀
