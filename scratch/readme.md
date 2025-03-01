@@ -57,5 +57,5 @@ npx ts-node-dev src/main.ts
 
 ## File naming convention
 
-name.type_of_thing.ts
+name add.type_of_thing.ts
 Ex: app.controller.ts for Class AppController{}
