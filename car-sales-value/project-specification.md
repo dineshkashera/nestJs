@@ -188,3 +188,17 @@ Now, install npm package for class-validator and class-transformer
 `npm install class-validator class-transformer`
 
 And use class validator and transformer in dtos class file
+
+## Interceptors(or middleware):
+
+- Interceptors (middleware) can mess around with incoming requests and/or outgoing responses
+
+Example:
+Class customInterceptors
+intercept(context: executionContext, next: CallHandler)
+
+intercept(): intercept method is called automatically.
+
+executionContext: Information on the incoming request.
+
+CallHandler: Kind of a reference to the request handler in our controller.
