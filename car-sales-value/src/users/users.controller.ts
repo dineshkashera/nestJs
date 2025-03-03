@@ -5,6 +5,7 @@ import { UsersService } from './users.service';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { PublicUserDtos } from './dtos/public-user.dtos';
 
+@Serialize(PublicUserDtos)
 @Controller('auth')
 export class UsersController {
   constructor(private usersService: UsersService){}
@@ -14,7 +15,7 @@ export class UsersController {
       this.usersService.create(body.email, body.password);
   }
 
-  @Serialize(PublicUserDtos)
+
   @Get('/:id')
   async findUser(@Param('id') id:string){
     console.log("contoller handler is running");
