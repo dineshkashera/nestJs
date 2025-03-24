@@ -19,12 +19,17 @@ const update_user_dtos_1 = require("./dtos/update-user.dtos");
 const users_service_1 = require("./users.service");
 const serialize_interceptor_1 = require("../interceptors/serialize.interceptor");
 const public_user_dtos_1 = require("./dtos/public-user.dtos");
+const auth_service_1 = require("./auth.service");
 let UsersController = class UsersController {
-    constructor(usersService) {
+    constructor(usersService, authService) {
         this.usersService = usersService;
+        this.authService = authService;
     }
     createUser(body) {
-        this.usersService.create(body.email, body.password);
+        return this.authService.singup(body.email, body.password);
+    }
+    userSignin(body) {
+        return this.authService.signin(body.email, body.password);
     }
     async findUser(id) {
         console.log("contoller handler is running");
@@ -52,6 +57,13 @@ __decorate([
     __metadata("design:paramtypes", [create_user_dtos_1.CreateUserDtos]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "createUser", null);
+__decorate([
+    (0, common_1.Post)('/signin'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [create_user_dtos_1.CreateUserDtos]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "userSignin", null);
 __decorate([
     (0, common_1.Get)('/:id'),
     __param(0, (0, common_1.Param)('id')),
@@ -84,6 +96,6 @@ __decorate([
 exports.UsersController = UsersController = __decorate([
     (0, serialize_interceptor_1.Serialize)(public_user_dtos_1.PublicUserDtos),
     (0, common_1.Controller)('auth'),
-    __metadata("design:paramtypes", [users_service_1.UsersService])
+    __metadata("design:paramtypes", [users_service_1.UsersService, auth_service_1.AuthService])
 ], UsersController);
 //# sourceMappingURL=users.controller.js.map
