@@ -3,5 +3,5 @@ export declare class AuthService {
     private userService;
     constructor(userService: UsersService);
     singup(email: string, password: string): Promise<import("./user.entity").User>;
-    signin(email: string, password: string): Promise<"Found user" | "not found">;
+    signin(email: string, password: string): Promise<import("./user.entity").User>;
 }

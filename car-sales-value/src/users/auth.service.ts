@@ -35,20 +35,25 @@ export class AuthService{
 
   async signin(email:string, password: string){
     //Get saltedHash passoword
-    const user = await this.userService.find(email);
-    console.log(user);
+    const [user] = await this.userService.find(email);
+    
+    if(!user){
+       throw new NotFoundException('User not found');
+    }
+
     //Get salt from hash password
-    const dbSalt = user[0].password.split(".");
+    const [dbSalt, dbhash] = user.password.split(".");
 
     //hash the password using the salt
-    const hash = (await scrypt(password, dbSalt[0], 32)) as Buffer;
+    const hash = (await scrypt(password, dbSalt, 32)) as Buffer;
 
     //compare the current Hashsalted password with db stored hashSalted password
-    if(hash.toString('hex') === user[0].password){
-        return 'Found user'
+    if(dbhash !== hash.toString('hex')){
+      throw new NotFoundException('Invalid details');
     }
     
-    return 'not found';
-    //return user if match else send error
+    //return user 
+    return user;
+    
   }
 }

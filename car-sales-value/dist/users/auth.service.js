@@ -31,14 +31,16 @@ let AuthService = class AuthService {
         return user;
     }
     async signin(email, password) {
-        const user = await this.userService.find(email);
-        console.log(user);
-        const dbSalt = user[0].password.split(".");
-        const hash = (await scrypt(password, dbSalt[0], 32));
-        if (hash.toString('hex') === user[0].password) {
-            return 'Found user';
+        const [user] = await this.userService.find(email);
+        if (!user) {
+            throw new common_1.NotFoundException('User not found');
         }
-        return 'not found';
+        const [dbSalt, dbhash] = user.password.split(".");
+        const hash = (await scrypt(password, dbSalt, 32));
+        if (dbhash !== hash.toString('hex')) {
+            throw new common_1.NotFoundException('Invalid details');
+        }
+        return user;
     }
 };
 exports.AuthService = AuthService;
