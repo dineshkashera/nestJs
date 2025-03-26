@@ -1,10 +1,12 @@
-import { Body, Controller, Post, Get, Patch, Delete, Param, Query, NotFoundException, UseInterceptors, ClassSerializerInterceptor } from '@nestjs/common';
+import { Body, Controller, Post, Get, Patch, Delete, Param, Query, NotFoundException, UseInterceptors, ClassSerializerInterceptor, UseGuards} from '@nestjs/common';
 import { CreateUserDtos } from './dtos/create-user.dtos';
 import { UpdateUserDtos } from './dtos/update-user.dtos';
 import { UsersService } from './users.service'; 
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { PublicUserDtos } from './dtos/public-user.dtos';
 import { AuthService } from './auth.service';
+import {CurrentUser} from './decorators/current-user.decorator';
+import { AuthGuard } from 'src/guards/auth.guard';
 
 @Serialize(PublicUserDtos)
 @Controller('auth')
@@ -14,6 +16,13 @@ export class UsersController {
   @Post('/signup')
   createUser(@Body() body: CreateUserDtos){
       return this.authService.singup(body.email, body.password);
+  }
+
+  
+  @Get('/whoiam')
+  @UseGuards(AuthGuard)
+  whoiam(@CurrentUser() user: string){
+    return user;
   }
 
   @Post('/signin')
