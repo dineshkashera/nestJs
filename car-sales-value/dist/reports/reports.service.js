@@ -21,8 +21,9 @@ let ReportsService = class ReportsService {
     constructor(repo) {
         this.repo = repo;
     }
-    create(reportDto) {
+    create(reportDto, user) {
         const report = this.repo.create(reportDto);
+        report.user = { 'id': 1 };
         return this.repo.save(report);
     }
 };

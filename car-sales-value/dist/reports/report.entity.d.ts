@@ -1,3 +1,4 @@
+import { User } from "src/users/user.entity";
 export declare class Report {
     id: number;
     price: number;
@@ -7,4 +8,5 @@ export declare class Report {
     mileage: number;
     lng: number;
     lat: number;
+    user: User;
 }
