@@ -9,44 +9,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Report = void 0;
-const typeorm_1 = require("typeorm");
-let Report = class Report {
-};
-exports.Report = Report;
+exports.CreateReportDto = void 0;
+const class_validator_1 = require("class-validator");
+class CreateReportDto {
+}
+exports.CreateReportDto = CreateReportDto;
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.Min)(100000),
+    (0, class_validator_1.Max)(89292992),
     __metadata("design:type", Number)
-], Report.prototype, "id", void 0);
+], CreateReportDto.prototype, "price", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Report.prototype, "price", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], Report.prototype, "make", void 0);
+], CreateReportDto.prototype, "make", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
-], Report.prototype, "model", void 0);
+], CreateReportDto.prototype, "model", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.Min)(1920),
+    (0, class_validator_1.Max)(2025),
     __metadata("design:type", Number)
-], Report.prototype, "year", void 0);
+], CreateReportDto.prototype, "year", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.Min)(20),
     __metadata("design:type", Number)
-], Report.prototype, "mileage", void 0);
+], CreateReportDto.prototype, "mileage", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, class_validator_1.IsLongitude)(),
     __metadata("design:type", Number)
-], Report.prototype, "lng", void 0);
+], CreateReportDto.prototype, "lng", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, class_validator_1.IsLatitude)(),
     __metadata("design:type", Number)
-], Report.prototype, "lat", void 0);
-exports.Report = Report = __decorate([
-    (0, typeorm_1.Entity)()
-], Report);
-//# sourceMappingURL=report.entity.js.map
+], CreateReportDto.prototype, "lat", void 0);
+//# sourceMappingURL=create-report.dto.js.map

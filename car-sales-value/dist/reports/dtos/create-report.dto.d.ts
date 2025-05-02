@@ -1,5 +1,4 @@
-export declare class Report {
-    id: number;
+export declare class CreateReportDto {
     price: number;
     make: string;
     model: number;
